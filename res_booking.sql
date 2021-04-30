@@ -1,0 +1,429 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Apr 24, 2021 at 10:59 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.3.27
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `res_booking`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking_chair`
+--
+
+CREATE TABLE `booking_chair` (
+  `id` int(11) NOT NULL,
+  `booking_id` varchar(200) DEFAULT NULL,
+  `chair_id` int(11) DEFAULT NULL,
+  `chair_no` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `booking_chair`
+--
+
+INSERT INTO `booking_chair` (`id`, `booking_id`, `chair_id`, `chair_no`) VALUES
+(1, '5ccbd8f5609b3', 38, 'TBL-4-1'),
+(2, '5ccbd8f5609b3', 39, 'TBL-4-2'),
+(3, '607ffdbfc0a83', 24, 'TBL-1-1'),
+(4, '607ffdbfc0a83', 25, 'TBL-1-2'),
+(5, '607ffdbfc0a83', 26, 'TBL-1-3'),
+(6, '607ffdbfc0a83', 29, 'TBL-1-6'),
+(7, '5ccbd8f5609b3', 38, 'TBL-4-1'),
+(8, '60835fa2e7e8f', 33, 'TBL-2-4'),
+(9, '608376c7eeb1b', 31, 'TBL-2-2'),
+(10, '6083e4efc3df0', 28, 'TBL-1-5'),
+(11, '6083e4efc3df0', 33, 'TBL-2-4'),
+(12, '6083f26595e9b', 25, 'TBL-1-2'),
+(13, '60840b4ae9186', 35, 'TBL-3-2'),
+(14, '60840b4ae9186', 36, 'TBL-3-3'),
+(15, '6084384513239', 33, 'TBL-2-4');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking_details`
+--
+
+CREATE TABLE `booking_details` (
+  `id` int(11) NOT NULL,
+  `booking_id` varchar(200) DEFAULT NULL,
+  `res_id` int(11) DEFAULT NULL,
+  `c_id` int(11) DEFAULT NULL,
+  `make_date` date DEFAULT NULL,
+  `make_time` varchar(50) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `phone` varchar(100) DEFAULT NULL,
+  `booking_date` date DEFAULT NULL,
+  `booking_time` varchar(30) DEFAULT NULL,
+  `bill` float DEFAULT NULL,
+  `transactionid` varchar(100) DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT 0 COMMENT '0- reject, 1-confirmed',
+  `reject` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `booking_details`
+--
+
+INSERT INTO `booking_details` (`id`, `booking_id`, `res_id`, `c_id`, `make_date`, `make_time`, `name`, `phone`, `booking_date`, `booking_time`, `bill`, `transactionid`, `status`, `reject`) VALUES
+(1, '5ccbd8f5609b3', 4, 9, '2019-05-03', '12:00:21pm', 'Ratan', '01516189260', '2019-05-04', '1:15pm', 230, 'trxoodkf', 1, 0),
+(2, '607ffdbfc0a83', 4, 12, '2021-04-21', '04:26:07pm', 'demo', '7993757995', '2021-04-22', '10:00am', 325, '1', 0, 0),
+(3, '60835fa2e7e8f', 4, 12, '2021-04-24', '06:00:34am', 'demo', '7993757995', '2021-04-27', '10:00am', 3800, '12', 0, 0),
+(4, '608376c7eeb1b', 4, 12, '2021-04-24', '07:39:19am', 'demo', '7993757995', '2021-04-26', '10:00am', 4480, '123', 0, 0),
+(5, '6083e4efc3df0', 4, 12, '2021-04-24', '03:29:19pm', 'demo', '7993757995', '2021-04-26', '10:00am', 1900, '123', 0, 0),
+(6, '6083f26595e9b', 4, 12, '2021-04-24', '04:26:45pm', 'demo', '7993757995', '2021-04-27', '10:00am', 1900, '123', 0, 0),
+(7, '60840b4ae9186', 4, 12, '2021-04-24', '06:12:58pm', 'demo', '7993757995', '2021-04-27', '6:15pm', 2200, '4', 0, 0),
+(8, '6084384513239', 4, 12, '2021-04-24', '09:24:53pm', 'demo', '7993757995', '2021-04-30', '10:00am', 1900, '123', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking_menus`
+--
+
+CREATE TABLE `booking_menus` (
+  `id` int(11) NOT NULL,
+  `booking_id` varchar(200) DEFAULT NULL,
+  `item_id` int(11) DEFAULT NULL,
+  `qty` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `booking_menus`
+--
+
+INSERT INTO `booking_menus` (`id`, `booking_id`, `item_id`, `qty`) VALUES
+(1, '5ccbd8f5609b3', 4, 2),
+(2, '5ccbd8f5609b3', 5, 2),
+(3, '607ffdbfc0a83', 4, 2),
+(4, '607ffdbfc0a83', 5, 1),
+(5, '607ffdbfc0a83', 6, 1),
+(6, '60835fa2e7e8f', 4, 2),
+(7, '608376c7eeb1b', 4, 1),
+(8, '608376c7eeb1b', 5, 1),
+(9, '6083e4efc3df0', 4, 1),
+(10, '6083f26595e9b', 4, 1),
+(11, '60840b4ae9186', 5, 0),
+(12, '60840b4ae9186', 6, 1),
+(13, '6084384513239', 4, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `locations`
+--
+
+CREATE TABLE `locations` (
+  `id` int(11) NOT NULL,
+  `location_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `locations`
+--
+
+INSERT INTO `locations` (`id`, `location_name`) VALUES
+(1, 'Lawsons Bay Colony'),
+(2, 'MVP'),
+(3, 'Gajuwaka'),
+(4, 'VIP Road'),
+(6, 'Beach Road');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu_item`
+--
+
+CREATE TABLE `menu_item` (
+  `id` int(11) NOT NULL,
+  `res_id` int(11) DEFAULT NULL,
+  `item_name` varchar(200) DEFAULT NULL,
+  `madeby` varchar(300) DEFAULT NULL,
+  `food_type` varchar(100) NOT NULL,
+  `price` float DEFAULT NULL,
+  `image` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `menu_item`
+--
+
+INSERT INTO `menu_item` (`id`, `res_id`, `item_name`, `madeby`, `food_type`, `price`, `image`) VALUES
+(4, 4, 'CARIBBEAN', 'African, Creole, and Latin American.', 'Fast Food', 1900, 'barbecue.jpg'),
+(5, 4, 'KOREAN', 'Rice, Vegetables, and Meat', 'Fast Food', 2580, 'naan.jpg'),
+(6, 4, 'INDIAN', 'Diversity and complexity of ingredients, spices, and flavours is characteristic of Indian cuisine', 'Fast Food', 2200, 'chicken.jpg'),
+(7, 4, 'GERMAN', ' Appetizing dumplings to Wursts (sausages) to delicious pastries', 'Fast Food', 1480, 'rice.jpg');
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `restaurant_chair`
+--
+
+CREATE TABLE `restaurant_chair` (
+  `id` int(11) NOT NULL,
+  `tbl_id` int(11) DEFAULT NULL,
+  `chair_no` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `restaurant_chair`
+--
+
+INSERT INTO `restaurant_chair` (`id`, `tbl_id`, `chair_no`) VALUES
+(14, 14, 'TBL-1-1'),
+(15, 14, 'TBL-1-2'),
+(16, 14, 'TBL-1-3'),
+(17, 15, 'TBL-5-1'),
+(18, 15, 'TBL-5-2'),
+(19, 15, 'TBL-5-3'),
+(20, 15, 'TBL-5-4'),
+(21, 13, 'TBL-2-2'),
+(23, 16, 'TBL-1-1'),
+(24, 3, 'TBL-1-1'),
+(25, 3, 'TBL-1-2'),
+(26, 3, 'TBL-1-3'),
+(27, 3, 'TBL-1-4'),
+(28, 3, 'TBL-1-5'),
+(29, 3, 'TBL-1-6'),
+(30, 4, 'TBL-2-1'),
+(31, 4, 'TBL-2-2'),
+(32, 4, 'TBL-2-3'),
+(33, 4, 'TBL-2-4'),
+(34, 5, 'TBL-3-1'),
+(35, 5, 'TBL-3-2'),
+(36, 5, 'TBL-3-3'),
+(37, 5, 'TBL-3-4'),
+(38, 6, 'TBL-4-1'),
+(39, 6, 'TBL-4-2'),
+(40, 6, 'TBL-4-3'),
+(41, 7, 'TBL-1-1'),
+(42, 7, 'TBL-1-2'),
+(43, 7, 'TBL-1-3'),
+(44, 7, 'TBL-1-4'),
+(45, 7, 'TBL-1-5'),
+(46, 8, 'TBL-2-1'),
+(47, 8, 'TBL-2-2'),
+(48, 8, 'TBL-2-3'),
+(49, 9, 'TBL-3-1'),
+(50, 9, 'TBL-3-2'),
+(51, 9, 'TBL-3-3'),
+(52, 9, 'TBL-3-4'),
+(53, 10, 'TBL-4-1'),
+(54, 10, 'TBL-4-2'),
+(55, 11, 'TBL-1-1'),
+(56, 11, 'TBL-1-2'),
+(57, 11, 'TBL-1-3'),
+(58, 11, 'TBL-1-4'),
+(59, 13, 'TBL-1-4'),
+(60, 13, 'TBL-1-3');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `restaurant_info`
+--
+
+CREATE TABLE `restaurant_info` (
+  `id` int(11) NOT NULL,
+  `restaurent_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `address` varchar(200) DEFAULT NULL,
+  `location` int(11) NOT NULL,
+  `logo` varchar(500) DEFAULT NULL,
+  `password` varchar(200) DEFAULT NULL,
+  `bkashnumber` varchar(20) DEFAULT NULL,
+  `approve_status` int(11) NOT NULL DEFAULT 0 COMMENT '0-not approve,1-approve ',
+  `role` int(20) DEFAULT NULL COMMENT '1 = restaurant, 2 = customer '
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `restaurant_info`
+--
+
+INSERT INTO `restaurant_info` (`id`, `restaurent_name`, `email`, `phone`, `address`, `location`, `logo`, `password`, `bkashnumber`, `approve_status`, `role`) VALUES
+(0, 'Park View Restaurant', 'park@gmail.com', '01821356478', '26 Indira Rd, Dhaka 1215', 0, 'park.jpg', '123', '01821356478', 0, 1),
+(4, 'Brew N Bistro Cafe', 'brew@gmail.com', '01821356478', '102, Beach Rd, near KKR Gowtham School, Lawsons Bay Colony', 1, 'park.jpg', '123', '01821356478', 0, 1),
+(5, 'New Purabi Hotel And Restaurant', 'newpurabi@gmail.com', '01751235864', 'Farmgate - Tejturi Bazar Rd, 49, East Tejturi Bazar, Farmgate, Tejgaon, Dhaka 1215', 0, 'new purobi.jpg', '123', '01751235864', 0, 1),
+(6, 'Bibiana Tehari & Biriyani Ghar', 'bibiana@gmail.com', '01514569852', '27/1, Indira Road, Farm Gate, Dhaka 1215', 0, 'bibiana.jpg', '123', '01514569852', 0, 1),
+(7, 'Ancholik Khana', 'ancholik@gmail.com', '01614552245', 'H.No 69, Road, R/A, 2 Niribili Project, Dhaka 1207', 0, 'ancholik.jpg', '123', '01614552245', 1, 0),
+(8, 'Bar B Q Tonite', 'barbq@gmail.com', '01711555263', 'House No.58, Road No.16 (NEW), Lawsons Bay Colony', 0, 'barbq.jpg', '123', '01711555263', 0, 1),
+(9, 'Ratan', 'ratan.hazra004@gmail.com', '01516189260', '44/2, Indira Road, Rajabazar, Farmgate', 0, 'chicken birayni.jpg', '123', NULL, 0, 2),
+(11, 'Panthasala', 'panthasala@gmial.com', '01511444852', '57/8, East Rajabazar, West, Panthapath, Dhaka 1215', 0, 'panthasala.jpg', '123', '01511444852', 0, 1),
+(12, 'demo', 'pusulurudivya@gmail.com', '7993757995', 'fgakdm', 0, '4.jpg', 'divya2000', NULL, 0, 2),
+(14, 'The Vizag Drive In', 'drive@gmail.com', '01821356478', ' 4-72-12, Beach Road, Lawsons Bay Colony', 1, 'bibiana.jpg', '123', '01821356478', 0, 1),
+(15, 'Passion Hut', 'hut@gmail.com', '01821356478', '2 4M 2, L.I.G - 41, Sector- 6, MVP Colony', 2, 'passion.jpg', '123', '01821356478', 0, 1),
+(16, 'Six degrees', 'six@gmail.com', '1234567799', '1-83-29, MVP Double Rd, MVP Sector 7', 2, 'deg.jpg', '123', NULL, 0, 1),
+(17, 'The Bowl Concepts', 'bowl@gmail.com', '123445678', 'Sector 9 Drive In, MVP Double Rd, MVP Colony', 0, 'bowl.jpg', '123', NULL, 0, 2),
+(18, 'BRUNCH & SUPPER', 'brunch@gmail.com', '81216 63334', 'Indira Colony, Gajuwaka', 3, 'brunch.jpg', '123', NULL, 0, 1),
+(19, 'SOMAA RESTOBAR', 'somaa@gmail.com', '92111 12666', '4TH FLOOR, VIP CENTER, VIP Rd', 4, 'soma.jpg', '123', NULL, 0, 1),
+(20, 'MYZ - UNO Vizag', 'uno@gmail.com', '91211 48393', 'Central building, 4, VIP Rd', 4, 'uno.jpg', '123', NULL, 0, 1),
+(21, 'Barbeque Nation ', 'barb@gmail.com', '8035002037', 'East Wing Near Harbour Park Road near Harbour Park', 5, 'bbq.jpg', '123', NULL, 0, 1),
+(22, 'The Gateway Hotel', 'gate@gmail.com', '891 662 3670', 'Beach Road, Visakhapatnam', 6, 'gate.jpg', '123', NULL, 0, 1),
+(23, 'elqldk', 'elqldk@gmail.com', '13', 'sdf', 0, 'uno.jpg', '123', NULL, 0, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `restaurant_tables`
+--
+
+CREATE TABLE `restaurant_tables` (
+  `id` int(11) NOT NULL,
+  `res_id` int(11) DEFAULT NULL,
+  `table_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `restaurant_tables`
+--
+
+INSERT INTO `restaurant_tables` (`id`, `res_id`, `table_name`) VALUES
+(3, 4, 'TBL-1'),
+(4, 4, 'TBL-2'),
+(5, 4, 'TBL-3'),
+(6, 4, 'TBL-4'),
+(7, 5, 'TBL-1'),
+(8, 5, 'TBL-2'),
+(9, 5, 'TBL-3'),
+(10, 5, 'TBL-4'),
+(11, 7, 'TBL-1'),
+(13, 4, 'TBL-3'),
+(14, 14, 'TBL-1'),
+(15, 14, 'TBL-2'),
+(16, 14, 'TBL-3'),
+(17, 15, 'TBL-1'),
+(18, 15, 'TBL-2'),
+(19, 15, 'TBL-3'),
+(20, 15, 'TBL-4'),
+(22, 16, 'TBL-2'),
+(23, 16, 'TBL-1');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `booking_chair`
+--
+ALTER TABLE `booking_chair`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `booking_details`
+--
+ALTER TABLE `booking_details`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `booking_menus`
+--
+ALTER TABLE `booking_menus`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `locations`
+--
+ALTER TABLE `locations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `menu_item`
+--
+ALTER TABLE `menu_item`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `restaurant_chair`
+--
+ALTER TABLE `restaurant_chair`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `restaurant_info`
+--
+ALTER TABLE `restaurant_info`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `restaurant_tables`
+--
+ALTER TABLE `restaurant_tables`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `booking_chair`
+--
+ALTER TABLE `booking_chair`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `booking_details`
+--
+ALTER TABLE `booking_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `booking_menus`
+--
+ALTER TABLE `booking_menus`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `locations`
+--
+ALTER TABLE `locations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `menu_item`
+--
+ALTER TABLE `menu_item`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `restaurant_chair`
+--
+ALTER TABLE `restaurant_chair`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
+--
+-- AUTO_INCREMENT for table `restaurant_info`
+--
+ALTER TABLE `restaurant_info`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `restaurant_tables`
+--
+ALTER TABLE `restaurant_tables`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
